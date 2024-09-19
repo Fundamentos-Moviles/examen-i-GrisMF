@@ -105,7 +105,7 @@ class CustomCard extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.teal[800], // Color del número
+                          color: Fondo.fondo4 // Color del número
                         ),
                       ),
                       const Spacer(), // Para empujar el ícono al lado derecho
@@ -162,7 +162,7 @@ class CustomCard extends StatelessWidget {
                   icon: const Icon(Icons.edit, size: 18),
                   label: const Text('Ver más'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.greenAccent[400],
+                    backgroundColor: Fondo.botones,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -176,7 +176,7 @@ class CustomCard extends StatelessWidget {
                   icon: const Icon(Icons.delete, size: 18),
                   label: const Text('Borrar'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.greenAccent[700],
+                    backgroundColor: Fondo.botones,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
