@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:examen1_mfg/utils/constante.dart' as Fondo;
 
 class MoreInfo extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class _MoreInfoState extends State<MoreInfo> {
   List<int> rowsDivs = [];
 
   Color _getColor(int index) {
-    return index % 2 == 0 ? Colors.black : Colors.grey;
+    return index % 2 == 0 ? Fondo.a : Fondo.b;
   }
 
   void addDivision() {
@@ -43,8 +44,18 @@ class _MoreInfoState extends State<MoreInfo> {
     return Column(
       children: [
         ElevatedButton(
+          style: ElevatedButton.styleFrom(
+           backgroundColor: Fondo.botones,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 120), // Más largo horizontalmente y más alto
+          ),
           onPressed: addDivision,
-          child: Text('Iniciar Sesión'),
+          child: Text(
+            'Iniciar Sesión',
+            style: TextStyle(color: Fondo.texto), 
+          ),
         ),
         Expanded(
           child: SingleChildScrollView(
