@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const errorMsg= Colors.black;
 const texto=Colors.white;
-const a=Colors.black;
+const a=Colors.black ;
 const b=Colors.blueGrey;
 
 ///Combinacion 2

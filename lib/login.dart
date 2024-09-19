@@ -36,7 +36,7 @@ class _LoginState extends State<Login> {
         errorMessage = null; // Reseteamos el mensaje de error
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => home()),
+          MaterialPageRoute(builder: (context) => HomePage()),
         );
       }
     });
@@ -164,8 +164,6 @@ class _LoginState extends State<Login> {
 }
 
 
-home() {
-}
 
 //Para pintar un Background personalizado
 class BackgroundLogin extends CustomPainter {

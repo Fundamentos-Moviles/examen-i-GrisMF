@@ -54,7 +54,7 @@ class _MoreInfoState extends State<MoreInfo> {
           onPressed: addDivision,
           child: Text(
             'Iniciar Sesión',
-            style: TextStyle(color: Fondo.texto), 
+            style: TextStyle(color: Fondo.texto),
           ),
         ),
         Expanded(
