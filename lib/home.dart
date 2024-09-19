@@ -75,90 +75,112 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isEven ? _buildEvenCard() : _buildOddCard();
+    return isEven ? _buildEvenCard(context) : _buildOddCard(context);
   }
 
-  // Diseño para números pares
-  Widget _buildEvenCard() {
+  //Diseño pares
+  Widget _buildEvenCard(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(15), // Bordes redondeados
       ),
-      color: Colors.lightBlueAccent.withOpacity(0.3), // Color de fondo diferente
+      elevation: 5, // Sombra para un ligero efecto flotante
+      color: Colors.white, // Fondo blanco de la tarjeta
       child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
+        padding: const EdgeInsets.all(15), // Espacio interno de la tarjeta
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Text(
-                  numero.toString(),
-                  style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            // Columna principal con número, título y descripción
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
                     children: [
+                      // Número grande
                       Text(
-                        titulo,
-                        style: const TextStyle(
-                          fontSize: 18,
+                        numero.toString(),
+                        style: TextStyle(
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
+                          color: Colors.teal[800], // Color del número
                         ),
                       ),
-                      Text(
-                        'Nota: $descripcion',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Fondo.a,
-                        ),
+                      const Spacer(), // Para empujar el ícono al lado derecho
+                      // Ícono en la esquina superior derecha
+                      const Icon(
+                        Icons.eco, // Icono de hoja (puedes cambiarlo si es necesario)
+                        color: Colors.green,
+                        size: 20,
                       ),
                     ],
                   ),
-                ),
-              ],
+                  const SizedBox(height: 8), // Espacio entre elementos
+                  // Título de la actividad
+                  Text(
+                    titulo,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black87, // Color del texto
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  // Descripción o nota
+                  Text(
+                    'Nota: $descripcion',
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey, // Color del texto más suave
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  // Estrellas de calificación
+                  Row(
+                    children: List.generate(
+                      estrellas,
+                          (index) => const Icon(Icons.star, color: Colors.amber, size: 20),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // Espacio horizontal entre las columnas
+            const SizedBox(width: 50),
+            // Columna de botones "Ver más" y "Borrar"
+            Column(
               children: [
-                Row(
-                  children: List.generate(
-                    estrellas,
-                        (index) => const Icon(Icons.star, color: Colors.yellow),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MoreInfo()),
+                    );
+                  },
+                  icon: const Icon(Icons.edit, size: 18),
+                  label: const Text('Ver más'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.greenAccent[400],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
-                Row(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:Fondo.botones,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      child: const Text('Ver más'),
+                const SizedBox(height: 10), // Espacio entre los botones
+                ElevatedButton.icon(
+                  onPressed: () {
+                    // Aquí puedes agregar la lógica para borrar
+                  },
+                  icon: const Icon(Icons.delete, size: 18),
+                  label: const Text('Borrar'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.greenAccent[700],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    const SizedBox(width: 10),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Fondo.botones,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      child: const Text('Borrar'),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -169,93 +191,90 @@ class CustomCard extends StatelessWidget {
   }
 
   // Diseño para números impares
-  Widget _buildOddCard() {
-    return Card(
-      margin: const EdgeInsets.all(10),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      color: Colors.greenAccent.withOpacity(0.3), // Color de fondo diferente
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  numero.toString(),
-                  style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        titulo,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        'Nota: $descripcion',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Fondo.a,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: List.generate(
-                    estrellas,
-                        (index) => const Icon(Icons.star, color: Colors.yellow),
-                  ),
-                ),
-                Row(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Fondo.botones,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      child: const Text('Ver más'),
+  Widget _buildOddCard(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MoreInfo()),
+        );
+      },
+      child: Card(
+        margin: const EdgeInsets.all(10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        color: Colors.greenAccent.withOpacity(0.3), // Color de fondo diferente
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  // Texto con el número
+                  Text(
+                    numero.toString(),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
                     ),
-                    const SizedBox(width: 10),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Fondo.botones,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  const SizedBox(width: 10),
+
+                  // Expande para usar el espacio disponible
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Título de la actividad
+                        Text(
+                          titulo,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      child: const Text('Borrar'),
+                        // Descripción o nota
+                        Text(
+                          'Nota: $descripcion',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ],
-            ),
-          ],
+                  ),
+                  // Añadir el ícono en la esquina superior derecha
+                  const Icon(
+                    Icons.eco, // Icono de hoja o el que prefieras
+                    color: Colors.green, // Color del ícono
+                    size: 20, // Tamaño del ícono
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              // Estrellas y botones
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Mostrar las estrellas
+                  Row(
+                    children: List.generate(
+                      estrellas,
+                          (index) => const Icon(Icons.star, color: Colors.yellow),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+
 }
 
