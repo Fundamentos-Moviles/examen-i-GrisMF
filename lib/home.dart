@@ -86,7 +86,7 @@ class CustomCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15), // Bordes redondeados
       ),
       elevation: 5, // Sombra para un ligero efecto flotante
-      color: Colors.white, // Fondo blanco de la tarjeta
+      color: Fondo.cd, // Fondo blanco de la tarjeta
       child: Padding(
         padding: const EdgeInsets.all(15), // Espacio interno de la tarjeta
         child: Row(
@@ -122,9 +122,9 @@ class CustomCard extends StatelessWidget {
                   Text(
                     titulo,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 20,
                       fontWeight: FontWeight.w500,
-                      color: Colors.black87, // Color del texto
+                      color: Fondo.a, // Color del texto
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -133,7 +133,7 @@ class CustomCard extends StatelessWidget {
                     'Nota: $descripcion',
                     style: const TextStyle(
                       fontSize: 14,
-                      color: Colors.grey, // Color del texto más suave
+                      color:Fondo.c,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -168,10 +168,10 @@ class CustomCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10), // Espacio entre los botones
+                const SizedBox(height: 10),
                 ElevatedButton.icon(
                   onPressed: () {
-                    // Aquí puedes agregar la lógica para borrar
+
                   },
                   icon: const Icon(Icons.delete, size: 18),
                   label: const Text('Borrar'),
@@ -204,7 +204,7 @@ class CustomCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        color: Colors.greenAccent.withOpacity(0.3), // Color de fondo diferente
+        color:Fondo.cd,
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Column(
@@ -228,12 +228,14 @@ class CustomCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Título de la actividad
+
                         Text(
                           titulo,
                           style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: Fondo.a,
+
                           ),
                         ),
                         // Descripción o nota
@@ -241,7 +243,7 @@ class CustomCard extends StatelessWidget {
                           'Nota: $descripcion',
                           style: const TextStyle(
                             fontSize: 14,
-                            color: Colors.grey,
+                            color: Fondo.c,
                           ),
                         ),
                       ],
@@ -249,9 +251,9 @@ class CustomCard extends StatelessWidget {
                   ),
                   // Añadir el ícono en la esquina superior derecha
                   const Icon(
-                    Icons.eco, // Icono de hoja o el que prefieras
-                    color: Colors.green, // Color del ícono
-                    size: 20, // Tamaño del ícono
+                    Icons.eco,
+                    color: Colors.green,
+                    size: 20,
                   ),
                 ],
               ),

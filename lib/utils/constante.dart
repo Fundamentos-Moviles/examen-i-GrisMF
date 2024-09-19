@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 const errorMsg= Colors.black;
 const texto=Colors.white;
-const a=Colors.black ;
+const a=Colors.black87;
 const b=Colors.blueGrey;
 const c=Colors.grey;
+const cd=Colors.white;
 
 ///Combinacion 2
 const fondo = Color(0xff520120);
